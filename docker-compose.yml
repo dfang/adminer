@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    links:
+      - mysql:mysql
+      - postgres:postgres
+    ports:
+      - 8080:8080
+
+  mysql:
+    image: mysql:5.6
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      # MYSQL_ROOT_HOST: "%"
+    volumes:
+     - ./db/mysql/data:/var/lib/mysql
+     - ./init.d/mysql/:/docker-entrypoint-initdb.d/:ro
+
+  postgres:
+    image: postgres:9.4
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      # POSTGRES_USER: "postgres"
+      # PGDATA: /var/lib/postgresql/data
+    volumes:
+     - ./db/postgres/data:/var/lib/postgresql/data
+     - ./init.d/postgres/:/docker-entrypoint-initdb.d/:ro

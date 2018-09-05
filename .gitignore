@@ -1,0 +1,3 @@
+db/
+init.d/mysql/*.sql
+init.d/postgres/*.sql
