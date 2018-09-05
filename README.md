@@ -6,12 +6,12 @@
 
 ## 连接方式
 
-system: mysql
-host: mysql
-username: root
-password: root
+system: mysql  
+host: mysql  
+username: root  
+password: root  
 
-system: postgresql
-host: postgres
-username: root
-password: root
+system: postgresql  
+host: postgres  
+username: postgres  
+password: postgres  
